@@ -1,0 +1,408 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --ff-primary: 'Roboto', sans-serif;
+    --ff-secondary: 'Source Sans 3', sans-serif;
+
+    --fw-regular: 400;
+    --fw-bold: 700;
+
+    --clr-light: #bcc3c8;
+    --clr-gray: #3c4144;
+    --clr-dark1: #162430;
+    --clr-dark2: rgba(5, 21, 22, .7);
+
+    --fs-body-reg: 1rem;
+    --fs-body-small: .7rem;
+    --fs-large: 2rem;
+
+    --box-shadow: 0 4px 5px 0 rgba(188, 195, 200, .15), 
+                  0 10px 10px 0 rgba(188, 195, 200, .1);
+}
+
+@media (min-width: 800px) {
+    :root {
+        --fs-body-reg: 1.2rem;
+        --fs-body-small: .8rem;
+        --fs-large: 3rem;
+    }
+}
+
+/* General styles */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--clr-dark1);
+    color: var(--clr-light);
+    font-size: var(--fs-body-reg);
+    font-family: var(--ff-primary);
+    line-height: 1.5;
+    letter-spacing: 1.5px;
+    font-weight: var(--fw-regular);
+    display: flex;
+    flex-direction: column;
+}
+
+.active {
+    border-bottom: solid 2px var(--clr-gray);
+}
+
+/* header section beginning */
+
+.header {
+    background-image: url("../images/background.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding: 0;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--clr-dark2);
+    width: 100%;
+    height: 50px;
+    padding: 0 1.5rem;
+}
+
+.nexus-logo-display-section {
+    display: flex;
+    align-items: center;
+}
+
+
+
+#nexus-logo-img {
+    width: 70px;
+}
+
+.intro-section {
+    padding: 50px 0;
+}
+
+.intro-section-text {
+    background-color: var(--clr-dark2);
+    max-width: 500px;
+    width: 80%;
+    padding: 1rem;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+}
+
+@media (max-width: 670px) {
+    .intro-section-text {
+        margin: 20px auto;
+        border-radius: 10px;
+        
+    }
+}
+
+/* Header Section End */
+
+/* Navigation Section Beginning */
+
+.nav-section {
+    position: fixed;
+    background-color: var(--clr-dark1);
+    color: var(--clr-light);
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 100;
+
+    transform: translateX(100%);
+    transition: transform 250ms ease-in-out;
+}
+
+.nav-section-list {
+    list-style: none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.nav-link {
+    color: var(--clr-light);
+    font-size: var(--fs-large);
+    font-weight: var(--fw-bold);
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.nav-link:hover {
+    color: var(--clr-gray);
+}
+
+.nav-section-open .nav-section {
+    transform: translateX(0);
+}
+
+.nav-section-open .nav-toggle {
+    position: fixed;
+}
+
+.nav-section-open .nav-bar {
+    transform: rotate(135deg);
+}
+
+.nav-section-open .nav-bar::before {
+    transform: rotate(90deg) translateX(-6px); 
+
+}
+
+.nav-section-open .nav-bar::after {
+    opacity: 0;
+}
+
+.nav-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 8px;
+    z-index: 1000;
+}
+
+.nav-bar {
+    position: relative;
+    display: block;
+}
+
+.nav-bar,
+.nav-bar::before,
+.nav-bar::after {
+    width: 30px;
+    background-color: var(--clr-light);
+    height: 3px;
+    border-radius: 3px;
+    transition: transform 250ms ease-in-out;
+}
+
+.nav-bar::before,
+.nav-bar::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.nav-bar::before {top: 6px;}
+.nav-bar::after {bottom: 6px;}
+
+/* Navigation Section End */
+
+/* Main Beginning */
+
+.main-exhibits-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-rows: 320px;
+    grid-column-gap: 20px;
+    grid-row-gap: 40px;
+    width: 95%;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+
+.individual-exhibit-container {
+    margin-top: 40px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 5px;
+    box-shadow: var(--box-shadow);
+    
+}
+
+.individual-exhibit-container > * {
+    margin: 0;
+
+}
+
+.exhibit-name {
+    font-size: var(--fs-body-small);
+}
+
+.exhibit-original-link {
+    text-decoration: none;
+    color: var(--clr-light);
+    font-size: var(--fs-body-small);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    padding: 5px 10px;
+
+}
+
+.exhibit-original-link:hover {
+    opacity: .8;
+    text-decoration: underline;
+}
+
+.exhibit-img-container {
+    width: 100%;
+    height: calc(100% - 90px);
+    overflow: hidden;
+    margin: 5px auto;
+}
+
+.exhibit-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 
+        transform 500ms cubic-bezier(0, 0, 1, 1),
+        opacity 250ms linear;
+}
+
+.exhibit-img:hover,
+.exhibit-img:focus {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+/* Main Section End */
+
+/* footer section beginning */
+
+.footer {
+    background-color: var(--clr-gray);
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.social-media-contacts-container {
+    width: 100%;
+}
+
+.social-media-contacts-list {
+    margin: 0 auto;
+    width: 50%;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.social-media-contact {
+    font-weight: var(--fw-bold);
+    pad: 5px;
+}
+
+.social-media-contact:hover,
+.nexus-rule:hover {
+    opacity: .7;
+    cursor: pointer;
+}
+
+.nexus-rules-container {
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto 20px;
+}
+
+.nexus-rules-container > p {
+    margin: 5px auto;
+}
+
+.nexus-rule {
+    color: inherit;
+    text-decoration: none;
+    margin: 0;
+    font-weight: var(--fw-bold);
+}
+
+.nexus-rule:hover {
+    text-decoration: underline;
+}
+
+@media (min-width: 600px) {
+    .social-media-contacts-container {
+        width: 500px;
+    }
+
+    .nexus-rules-container {
+        flex-direction: row;
+        justify-content: space-around;
+        width: 90%;
+        max-width: 900px;
+    }
+}
+
+/* Footer Section End */
+
+
+/****************************************************
+End of home page &
+Beginning of additional pages
+*****************************************************/
+
+/* General Styles */
+
+.back-home-btn {
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.back-home {
+    color: var(--clr-light);
+    font-weight: var(--fw-bold);
+    font-size: 2rem;
+}
+
+.back-home:hover {
+    opacity: .7;
+}
+
+.return-sign {
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+.return-sign > i {
+    color: var(--clr-light);
+    font-weight: var(--fw-bold);
+}
+
+.main-in-progress {
+    background-image: url(/images//background.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    padding: 100px;
+    text-align: center;
+    color: var(--clr-light);
+    font-weight: var(--fw-bold);
+}
+
+.main-in-progress > * {
+    margin: 0;
+}
